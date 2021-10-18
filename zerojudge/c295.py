@@ -1,35 +1,39 @@
 #start
-#input
-s = input().split()
+n,m = input().split()
+n = int(n)
+m = int(m)
 
-m = int(s[0])    #3
-n = int(s[1])    #2
-max_num = []
-#input & process
-for i in range(m):
+#process
+round_max  = []
+while n>0:
+    n-=1
+    max = 0
     nums = input().split()
-    
-    for j in range(n):    #['1','5'] -> [1,5]
-        nums[j] = int(nums[j])    
+    for num in nums:
+        num  = int(num)
+        if num > max : 
+            max = num
+    round_max.append(max)
+sum = 0
+for i in round_max :
+    sum += i
 
-    m = max(nums)    #m = 5
-    max_num.append(m)
-
-#output1
-opt1 = sum(max_num)
-print(opt1)
-
-#output2
-flag = False    #False表示還沒print過
-for i in max_num:
-    if opt1 % i == 0:
-        if i == max_num[-1]:
-            print(i)
-        else:
-            print(i,end=" ")
+print(sum)
+flag = False
+for i in round_max[:-1] :
+    if sum % i ==0:
+        print(i,end=" ")
         flag = True
+if sum % round_max[-1] ==0:
+    print(round_max[-1])
+    flag = True
 
 if flag == False:
     print("-1")
+
+        
+
+
+
 
 

@@ -1,25 +1,30 @@
-#start
-#input
-ipt = input().split(" ")
-#process&output
-for i in range(3):
-    ipt[i] = int(ipt[i])
-    if(ipt[i] > 1):
-        ipt[i] = 1
+# start
+# input
+ipt = input().split(' ')
+
+# process & output
+a, b, guess = ipt
+a = int(a)
+b = int(b)
+if a > 1:
+    a = 1
+if b > 1:
+    b = 1
 
 flag = True
-if ipt[0] & ipt[1] == ipt[2]:
-    print('AND')
+result = None
+
+if a&b == guess:
+    print("AND")
     flag = False
 
-if ipt[0] | ipt[1] == ipt[2]:
-    print('OR')
+if a|b == guess:
+    print("OR")
     flag = False
 
-if ipt[0] ^ ipt[1] == ipt[2]:
-    print('XOR')
+if a^b == guess:
+    print("XOR")
     flag = False
 
 if flag:
     print("IMPOSSIBLE")
-
