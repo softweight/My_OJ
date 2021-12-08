@@ -12,9 +12,14 @@ struct TreeNode {
 
 class Solution {
 public:
-    bool hasPathSum(TreeNode* root, int targetSum) {
-        if(!root) return false;
-        if(!root->left && !root->right && root->val == targetSum) return true;
-        return hasPathSum(root->right,targetSum - root->val) ||  hasPathSum(root->left,targetSum - root->val);
+    bool isValid(TreeNode* root, TreeNode* min, TreeNode* max){
+        if(!root) return true;
+        if((min && root->val <= min->val) || (max && root->val >= max->val)) return false;
+
+        return isValid(root->left, min, root) && isValid(root->right, root, max);
+    }
+    bool isValidBST(TreeNode* root) {
+        
+        return isValid(root,NULL,NULL);
     }
 };
